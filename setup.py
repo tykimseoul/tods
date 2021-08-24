@@ -5,9 +5,11 @@ import logging
 
 PACKAGE_NAME = 'tods'
 
+
 def read_file_entry_points(fname):
     with open(fname) as entry_points:
         return entry_points.read()
+
 
 def merge_entry_points():
     entry_list = ['tods/resources/.entry_points.ini']
@@ -17,8 +19,9 @@ def merge_entry_points():
         path_list = entry_point.split('\n')[1:]
         merge_entry += path_list
     entry_point_merge = dict()
-    entry_point_merge['d3m.primitives'] = list(set(merge_entry)) # remove dumplicated elements
+    entry_point_merge['d3m.primitives'] = list(set(merge_entry))  # remove dumplicated elements
     return entry_point_merge
+
 
 setup(
     name=PACKAGE_NAME,
@@ -29,7 +32,7 @@ setup(
     url='https://tods-doc.github.io',
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     package_data={
-        'tods': ['resources/.entry_points.ini', 
+        'tods': ['resources/.entry_points.ini',
                  'resources/.requirements.txt',
                  'resources/default_pipeline.json'
                  ]
@@ -38,21 +41,21 @@ setup(
         'tamu_d3m',
         'tamu_axolotl',
         'Jinja2',
-        'numpy==1.18.2',
+        'numpy==1.19.2',
         'combo',
         'simplejson==3.12.0',
         'scikit-learn==0.22.0',
-	'statsmodels==0.11.1',
+        'statsmodels==0.11.1',
         'PyWavelets>=1.1.1',
         'pillow==7.1.2',
-        'tensorflow==2.2', # should be removed later
-        'keras', # should be removed later
+        'tensorflow==2.6',  # should be removed later
+        'keras',  # should be removed later
         'pyod',
         'nimfa==1.4.0',
         'stumpy==1.4.0',
         'more-itertools==8.5.0',
     ],
 
-    entry_points = merge_entry_points()
+    entry_points=merge_entry_points()
 
 )
