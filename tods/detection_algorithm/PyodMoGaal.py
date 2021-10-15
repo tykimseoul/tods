@@ -182,14 +182,14 @@ class Mo_GaalPrimitive(UnsupervisedOutlierDetectorBase[Inputs, Outputs, Params, 
                 'contact': 'mailto:khlai037@tamu.edu'
 
             },
-            'installation': [
-                {'type': metadata_base.PrimitiveInstallationType.PIP,
-                 'package_uri': 'git+https://gitlab.com/lhenry15/tods.git@{git_commit}#egg=TODS'.format(
-                     git_commit=d3m_utils.current_git_commit(os.path.dirname(__file__)),
-                 ),
-                 }
-
-            ],
+            # 'installation': [
+            #     {'type': metadata_base.PrimitiveInstallationType.PIP,
+            #      'package_uri': 'git+https://gitlab.com/lhenry15/tods.git@{git_commit}#egg=TODS'.format(
+            #          git_commit=d3m_utils.current_git_commit(os.path.dirname(__file__)),
+            #      ),
+            #      }
+            #
+            # ],
             'algorithm_types': [
                 metadata_base.PrimitiveAlgorithmType.DATA_PROFILING,
             ],

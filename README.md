@@ -5,8 +5,6 @@
 
 [![Build Status](https://travis-ci.org/datamllab/tods.svg?branch=master)](https://travis-ci.org/datamllab/tods)
 
-[中文文档](README.zh-CN.md)
-
 TODS is a full-stack automated machine learning system for outlier detection on multivariate time-series data. TODS provides exhaustive modules for building machine learning-based outlier detection systems, including: data processing, time series processing, feature analysis (extraction), detection algorithms, and reinforcement module. The functionalities provided via these modules include data preprocessing for general purposes, time series data smoothing/transformation, extracting features from time/frequency domains, various detection algorithms, and involving human expertise to calibrate the system. Three common outlier detection scenarios on time-series data can be performed: point-wise detection (time points as outliers), pattern-wise detection (subsequences as outliers), and system-wise detection (sets of time series as outliers), and a wide-range of corresponding algorithms are provided in TODS. This package is developed by [DATA Lab @ Texas A&M University](https://people.engr.tamu.edu/xiahu/index.html).
 
 TODS is featured for:
@@ -17,27 +15,14 @@ TODS is featured for:
 * **Automated Machine Learning** aims to provide knowledge-free process that construct optimal pipeline based on the given data by automatically searching the best combination from all of the existing modules.
 
 ## Resources
+* Original Project: [https://github.com/datamllab/tods](https://github.com/datamllab/tods)
 * API Documentations: [http://tods-doc.github.io](http://tods-doc.github.io)
 * Paper: [https://arxiv.org/abs/2009.09822](https://arxiv.org/abs/2009.09822)
 * Related Project: [AutoVideo: An Automated Video Action Recognition System](https://github.com/datamllab/autovideo)
 
-## Cite this Work:
-If you find this  work useful, you may cite this work:
-```
-@article{Lai_Zha_Wang_Xu_Zhao_Kumar_Chen_Zumkhawaka_Wan_Martinez_Hu_2021, 
-	title={TODS: An Automated Time Series Outlier Detection System}, 
-	volume={35}, 
-	number={18}, 
-	journal={Proceedings of the AAAI Conference on Artificial Intelligence}, 
-	author={Lai, Kwei-Herng and Zha, Daochen and Wang, Guanchu and Xu, Junjie and Zhao, Yue and Kumar, Devesh and Chen, Yile and Zumkhawaka, Purav and Wan, Minyang and Martinez, Diego and Hu, Xia}, 
-	year={2021}, month={May}, 
-	pages={16060-16062} 
-}
-
-```
-
 ## Installation
 
+### Local Installation
 This package works with **Python 3.6** and pip 19+. You need to have the following packages installed on the system (for Debian/Ubuntu):
 ```
 sudo apt-get install libssl-dev libcurl4-openssl-dev libyaml-dev build-essential libopenblas-dev libcap-dev ffmpeg
@@ -52,6 +37,36 @@ Install locally with `pip`:
 cd tods
 pip install -e .
 ```
+
+### Using Docker
+The local installation may not function properly depending on your environment. If so, I suggest using Docker for the installation. The instructions here assumes you have at least some experience with docker. To learn the basics of Docker please refer to this [page](https://docs.docker.com/get-started/overview/).
+First, you need to install the packages mentioned above.
+```
+sudo apt-get install libssl-dev libcurl4-openssl-dev libyaml-dev build-essential libopenblas-dev libcap-dev ffmpeg
+```
+Then, clone the repository.
+```
+git clone https://github.com/tykimseoul/tods.git
+```
+Move into the tods directory.
+```
+cd tods
+```
+Now you need to build the provided Dockerfile.
+```
+sudo docker build -t <name_of_your_choice> .
+```
+The build process may take a few minutes. Please be patient.  
+After the build is complete, you can run the interactive mode of the container. This helps you run scripts as if you are in a terminal.
+```
+sudo docker container run -it <the_name_you_chose> /bin/bash
+```
+Try running the example script inside the container.
+```
+cd examples/sk_examples
+python Telemanom_test.py
+```
+If the script finishes correctly, you are done with the installation.
 
 # Examples
 Examples are available in [/examples](examples/). For basic usage, you can evaluate a pipeline on a given datasets. Here, we provide example to load our default pipeline and evaluate it on a subset of yahoo dataset.
