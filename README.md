@@ -39,12 +39,9 @@ pip install -e .
 ```
 
 ### Using Docker
-The local installation may not function properly depending on your environment. If so, I suggest using Docker for the installation. The instructions here assumes you have at least some experience with docker. To learn the basics of Docker please refer to this [page](https://docs.docker.com/get-started/overview/).
-First, you need to install the packages mentioned above.
-```
-sudo apt-get install libssl-dev libcurl4-openssl-dev libyaml-dev build-essential libopenblas-dev libcap-dev ffmpeg
-```
-Then, clone the repository.
+The local installation may not function properly depending on your environment. If so, I suggest using Docker for the installation. The instructions here assume you have at least some experience with docker. To learn the basics of Docker please refer to this [page](https://docs.docker.com/get-started/overview/).
+
+First, clone the repository.
 ```
 git clone https://github.com/tykimseoul/tods.git
 ```
@@ -67,6 +64,8 @@ cd examples/sk_examples
 python Telemanom_test.py
 ```
 If the script finishes correctly, you are done with the installation.
+
+Now you can similarly run a script of your choice inside the container. Remember to rebuild the Docker image once you update a file.
 
 # Examples
 Examples are available in [/examples](examples/). For basic usage, you can evaluate a pipeline on a given datasets. Here, we provide example to load our default pipeline and evaluate it on a subset of yahoo dataset.
