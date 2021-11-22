@@ -1,3 +1,4 @@
+from tensorflow.python import keras
 from keras.models import Sequential, load_model
 from keras.callbacks import History, EarlyStopping, Callback
 from keras.layers.recurrent import LSTM
@@ -85,7 +86,7 @@ class Model:
 
         self.model.add(LSTM(
             self._layers[0],
-            input_shape=(None, channel.X_train.shape[2]),
+            input_shape=(None, channel.x_train.shape[2]),
             return_sequences=True))
         self.model.add(Dropout(self._dropout))
 
@@ -96,7 +97,7 @@ class Model:
 
         self.model.add(Dense(
             self._n_predictions
-            *channel.X_train.shape[2]
+            *channel.x_train.shape[2]
             ))
         self.model.add(Activation('linear'))
 
@@ -106,7 +107,7 @@ class Model:
         
         # print(self.model.summary())
 
-        self.model.fit(channel.X_train,
+        self.model.fit(channel.x_train,
                        channel.y_train,
                        batch_size=self._lstm_batch_size,
                        epochs=self._epochs,
@@ -199,8 +200,8 @@ class Model:
 
         # return channel
 
-        self.y_hat = self.model.predict(channel.X_test)        
-        self.y_hat = np.reshape(self.y_hat,(channel.X_test.shape[0],self._n_predictions,channel.X_test.shape[2]))
+        self.y_hat = self.model.predict(channel.x_test)
+        self.y_hat = np.reshape(self.y_hat, (channel.x_test.shape[0], self._n_predictions, channel.x_test.shape[2]))
         # print("shape before ",self.y_hat.shape)
         channel.y_hat = self.y_hat
         return channel

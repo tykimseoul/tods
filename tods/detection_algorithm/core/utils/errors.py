@@ -54,7 +54,7 @@ class Errors:
         self.i_anom = np.array([])
         self.E_seq = []
         self.anom_scores = []
-        channel.y_test = np.reshape(channel.y_test,(channel.X_test.shape[0],self._n_predictions,channel.X_test.shape[2]))
+        channel.y_test = np.reshape(channel.y_test, (channel.x_test.shape[0], self._n_predictions, channel.x_test.shape[2]))
         # print("*****************************")
         # print("y_hat shape",channel.y_hat.shape)
         # print("y_test shape",channel.y_test.shape)
@@ -70,11 +70,11 @@ class Errors:
         self.e = [abs(y_h-y_t) for y_h, y_t in
                   zip(channel.y_hat, channel.y_test)]
 
-        self.e = np.reshape(self.e,(channel.X_test.shape[0],self._n_predictions,channel.X_test.shape[2]))
+        self.e = np.reshape(self.e, (channel.x_test.shape[0], self._n_predictions, channel.x_test.shape[2]))
         # print("raw shape",self.e.shape)
 
         n_pred = self._n_predictions
-        n_feature = channel.X_test.shape[2]
+        n_feature = channel.x_test.shape[2]
 
         # Aggregation for point wise
         # aggregated_error = np.zeros(n_feature*(len(self.e)+n_pred-1))

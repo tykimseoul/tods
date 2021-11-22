@@ -48,11 +48,12 @@ setup(
         'statsmodels==0.11.1',
         'PyWavelets>=1.1.1',
         'pillow==7.1.2',
-        'tensorflow==2.6',  # should be removed later
-        'keras',  # should be removed later
+        'tensorflow==2.5',  # should be removed later
+        # 'keras',  # should be removed later
         'pyod',
         'nimfa==1.4.0',
         'stumpy==1.4.0',
+        'tqdm',
         'more-itertools==8.5.0',
     ],
 

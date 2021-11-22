@@ -8,7 +8,7 @@ import numpy as np
 import typing
 import pandas as pd
 
-
+from tensorflow.python import keras
 from keras.models import Sequential, load_model
 from keras.callbacks import History, EarlyStopping, Callback
 from keras.layers.recurrent import LSTM
@@ -423,7 +423,7 @@ class Detector(CollectiveBaseDetector):
 						)
 
 		# prediciton smoothed error
-		prediction_errors = np.reshape(errors.e_s,(self._channel.X_test.shape[0],self._channel.X_test.shape[2]))
+		prediction_errors = np.reshape(errors.e_s, (self._channel.x_test.shape[0], self._channel.x_test.shape[2]))
 		prediction_errors = np.sum(prediction_errors,axis=1)
 
 		left_indices = []

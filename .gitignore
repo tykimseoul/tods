@@ -116,3 +116,5 @@ example_pipeline.json
 tmp.txt
 
 benchmark/realworld_data/data/*.csv
+*.png
+*.csv

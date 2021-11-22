@@ -11,6 +11,7 @@ from .CollectiveBase import CollectiveBaseDetector
 
 # from tod.utility import get_sub_matrices
 
+from tensorflow.python import keras
 from keras.layers import Dense, LSTM
 from keras.models import Sequential
 
