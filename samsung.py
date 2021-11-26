@@ -9,9 +9,9 @@ from sklearn.preprocessing import MinMaxScaler
 from tqdm import tqdm
 
 from evaluator import compute_metrics
-# from tods.sk_interface.detection_algorithm.Telemanom_skinterface import TelemanomSKI
+from tods.sk_interface.detection_algorithm.Telemanom_skinterface import TelemanomSKI
 # from tods.sk_interface.detection_algorithm.MatrixProfile_skinterface import MatrixProfileSKI
-from tods.sk_interface.detection_algorithm.AutoEncoder_skinterface import AutoEncoderSKI
+# from tods.sk_interface.detection_algorithm.AutoEncoder_skinterface import AutoEncoderSKI
 from tods.sk_interface.detection_algorithm.VariationalAutoEncoder_skinterface import VariationalAutoEncoderSKI
 from tods.sk_interface.detection_algorithm.HBOS_skinterface import HBOSSKI
 from tods.sk_interface.detection_algorithm.So_Gaal_skinterface import So_GaalSKI
@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 
 methods = {
-    # 'TelemanomSKI': TelemanomSKI(l_s=2, n_predictions=1),
+    # 'TelemanomSKI': TelemanomSKI(l_s=10, n_predictions=10, layers=[128, 128], epochs=20),
     # 'MatrixProfileSKI': MatrixProfileSKI(),
     # 'AutoEncoderSKI': AutoEncoderSKI(hidden_neurons=[16, 8, 16]),
     # 'So_GaalSKI_05': So_GaalSKI(contamination=0.05),
@@ -36,7 +36,7 @@ methods = {
     # 'LODASKI_15': LODASKI(n_bins=15), *
     # 'LODASKI_10': LODASKI(n_bins=10),
     # 'LODASKI_5': LODASKI(n_bins=5),
-    'VariationalAutoEncoderSKI': VariationalAutoEncoderSKI(encoder_neurons=[17, 19, 21], decoder_neurons=[23, 13, 11], epochs=30),
+    'VariationalAutoEncoderSKI': VariationalAutoEncoderSKI(encoder_neurons=[256, 512, 64, 8], decoder_neurons=[8, 32, 64, 128], epochs=30),
     # 'VariationalAutoEncoderSKI_16': VariationalAutoEncoderSKI(encoder_neurons=[8, 16, 8], decoder_neurons=[16, 16, 16], epochs=30),
     # 'HBOSSKI_20': HBOSSKI(n_bins=20),
     # 'HBOSSKI_15': HBOSSKI(n_bins=15),

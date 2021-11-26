@@ -59,9 +59,9 @@ class Params(Params_ODBase):
 	pass
 
 
-class Hyperparams(Hyperparams_ODBase):	
+class Hyperparams(Hyperparams_ODBase):
 
-	
+
 	smoothing_perc = hyperparams.Hyperparameter[float](
 		default=0.05,
 		semantic_types=['https://metadata.datadrivendiscovery.org/types/TuningParameter'],
@@ -217,9 +217,9 @@ class TelemanomPrimitive(UnsupervisedOutlierDetectorBase[Inputs, Outputs, Params
 				 hyperparams: Hyperparams,  #
 				 random_seed: int = 0,
 				 docker_containers: Dict[str, DockerContainer] = None) -> None:
-		
+
 		super().__init__(hyperparams=hyperparams, random_seed=random_seed, docker_containers=docker_containers)
-	   
+
 		self._clf = Detector(smoothing_perc=self.hyperparams['smoothing_perc'],
 						window_size=self.hyperparams['window_size_'],
 						error_buffer=self.hyperparams['error_buffer'],
@@ -316,7 +316,7 @@ class Detector(CollectiveBaseDetector):
 	def __init__(self,smoothing_perc=0.05,window_size = 10,error_buffer = 5,batch_size =30, \
 				 dropout = 0.3, validation_split=0.2,optimizer='adam',lstm_batch_size=64,loss_metric='mean_squared_error', \
 				 layers=[40,40],epochs = 1,patience =10,min_delta=0.0003,l_s=5,n_predictions=2,p = 0.05,contamination=0.1):
-		
+
 		# super(Detector, self).__init__(contamination=contamination)
 		super(Detector, self).__init__(contamination=contamination,
 											  window_size=l_s,
@@ -364,12 +364,13 @@ class Detector(CollectiveBaseDetector):
 		inputs = X
 		self._channel = Channel(n_predictions = self._n_predictions,l_s = self._l_s)
 		self._channel.shape_train_data(inputs)
+		print(self._channel.X_train.shape)
 
 		self._model = Model(self._channel,patience = self._patience,
 							  min_delta =self._min_delta,
 							  layers = self._layers,
 							  dropout = self._dropout,
-							  n_predictions = self._n_predictions, 
+							  n_predictions = self._n_predictions,
 							  loss_metric = self._loss_metric,
 							  optimizer = self._optimizer,
 							  lstm_batch_size = self._lstm_batch_size,
@@ -404,7 +405,7 @@ class Detector(CollectiveBaseDetector):
 		anomaly_scores : numpy array of shape (n_samples,)
 			The anomaly score of the input samples.
 		"""
-		
+
 		X = check_array(X).astype(np.float)
 		self._set_n_classes(None)
 
@@ -416,7 +417,7 @@ class Detector(CollectiveBaseDetector):
 						window_size = self._window_size,
 						batch_size = self._batch_size,
 						smoothing_perc = self._smoothin_perc,
-						n_predictions = self._n_predictions, 
+						n_predictions = self._n_predictions,
 						l_s = self._l_s,
 						error_buffer = self._error_buffer,
 						p = self._p
@@ -435,7 +436,7 @@ class Detector(CollectiveBaseDetector):
 			scores.append(prediction_errors[i])
 
 
-		
+
 		return np.asarray(scores),np.asarray(left_indices),np.asarray(right_indices)
 
 

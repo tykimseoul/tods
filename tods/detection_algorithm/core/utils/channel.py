@@ -75,7 +75,7 @@ class Channel:
         #     print("X train shape",self.X_train .shape)
         #     print("Y train shape",self.y_train .shape)
         # else:
-        
+        print(data.shape)
         self.X_train = data[:, :-self._n_predictions, :]
         self.y_train = data[:, -self._n_predictions:, :]  # telemetry value is at position 0
         self.y_train = np.reshape(self.y_train,(self.y_train.shape[0],self.y_train.shape[1]*self.y_train.shape[2]))
